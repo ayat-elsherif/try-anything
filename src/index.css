@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.video-js .vjs-control-bar {
+  height: 3.5rem !important;
+}
+
+
+.video-js .vjs-control-bar .vjs-progress-control {
+  width: 66%;
+  left: 13%;
+  position: absolute;
+  height: 25px;
+  bottom: 12px;
+  z-index: 3;
+}
+
+.video-js .vjs-control-bar .vjs-button {
+  height: 50px;
+}

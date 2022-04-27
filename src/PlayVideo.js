@@ -3,10 +3,10 @@ import "./videojs/skins/shaka/videojs.css";
 import videojs from "video.js";
 import "./videojs/components/nuevo.js";
 import "./videojs/components/thumbnails.js"; // if you need it
+import "./videojs/components/upnext.js";
 import TempData from "./TempData.json";
 export default function VideoJs() {
   let player;
-  let currentVideo;
   let allDataFromJson = [];
   console.log(allDataFromJson, "urls");
   useEffect(() =>
@@ -45,6 +45,7 @@ export default function VideoJs() {
       // Initialize Nuevo plugin
 
       player.nuevo(nuevoOptions);
+      // player.upnext(TempData);
 
       // Initialize thumbnails plugin if required
 
@@ -96,6 +97,12 @@ export default function VideoJs() {
             srlang: "fr",
             label: "French",
           },
+          {
+            kind: "chapters",
+            src: "/chapters/steal.vtt",
+            srclang: "en",
+            label: "Chapters",
+          },
         ],
         // tracks: [{ kind: "metadata", src: "//url-to-vtt-thumbs-file.vtt" }],
         poster: item.img,
@@ -104,60 +111,6 @@ export default function VideoJs() {
         infoDescription: "Info 1 description",
       };
       player.changeSource(video_details);
-
-      // const video_1 = {
-      //   sources: [
-      //     {
-      //       src: "/videos/offline.mp4",
-      //       type: "video/mp4",
-      //     },
-      //   ],
-      //   tracks: [{ kind: "metadata", src: "//url-to-vtt-thumbs-file.vtt" }],
-      //   poster: "/images/screenshot.png",
-      //   infoTitle: "Info 1 title",
-      //   infoDescription: "Info 1 description",
-      // };
-      // const video_2 = {
-      //   sources: [
-      //     {
-      //       src: "/videos/vr.mp4",
-      //       type: "video/mp4",
-      //     },
-      //   ],
-      //   tracks: [
-      //     {
-      //       kind: "captions",
-      //       src: "//url-to-captions_en.vtt",
-      //       srlang: "en",
-      //       label: "English",
-      //       default: true,
-      //     },
-      //     {
-      //       kind: "captions",
-      //       src: "//url-to-captions_de.vtt",
-      //       srlang: "de",
-      //       label: "German",
-      //     },
-      //     {
-      //       kind: "captions",
-      //       src: "//url-to-captions_fr.vtt",
-      //       srlang: "fr",
-      //       label: "French",
-      //     },
-      //   ],
-      //   poster: "/images/awesome.jpg",
-      //   title: "Video 2 title",
-      //   infoTitle: "Info 2 title",
-      //   infoDescription: "Info 2 description",
-      // };
-
-      // if (currentVideo === 1) {
-      //   currentVideo = 2;
-      //   player.changeSource(video_2);
-      // } else {
-      //   currentVideo = 1;
-      //   player.changeSource(video_1);
-      // }
     }
   };
 
