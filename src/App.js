@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import DateTimePicker from "./components/DateTimePicker";
+import PlayVideo from "./PlayVideo";
+import QuillEditor from "./QuillEditor";
+import VideoJS from "./VideoJS";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <DateTimePicker /> */}
+      <div style={{ margin: "10rem", paddingBottom: "10rem" }}>
+        <PlayVideo />
+      </div>
+      {/* <QuillEditor /> */}
     </div>
   );
 }
