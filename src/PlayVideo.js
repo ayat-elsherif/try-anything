@@ -16,6 +16,17 @@ export default function VideoJs() {
         controls: true,
         preload: "auto",
         playsinline: "true",
+        mirrorButton: true,
+        // dataSetup: {
+        //   techOrder: ["youtube"],
+        //   sources: [
+        //     {
+        //       type: "video/youtube",
+        //       src: "https://www.youtube.com/watch?v=xjS6SftYQaQ",
+        //     },
+        //   ],
+        // },
+
         poster: "/images/screenshot.png",
         sources: [
           {
@@ -134,11 +145,15 @@ export default function VideoJs() {
         <video
           ref={(node) => (videojs.videoNode = node)}
           className="video-js vjs-fluid"
+          data-setup='{ "techOrder": ["youtube", "html5"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}] }'
         />
       </div>
-      {/* <button className="btn" onClick={handleClick}>
-        Change source
-      </button> */}
+      <button className="btn" onClick={() => player.rewind()}>
+        rewind
+      </button>
+      <button className="btn" onClick={() => player.forward()}>
+        forward
+      </button>
       <div>{allDataFromJson}</div>
     </>
   );
