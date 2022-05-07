@@ -61,14 +61,17 @@ export default function VideoJs() {
 
       return () => {
         // destroy player on unmount
-        if (this.player) {
-          this.player.dispose();
+        if (player) {
+          player.dispose();
         }
       };
     }, []);
 
   const handleClick = (item) => {
-    if (player) {
+    if (!player) {
+      console.log("no player");
+      return;
+    } else {
       console.log(item, "item");
       const video_details = {
         sources: [
@@ -121,7 +124,7 @@ export default function VideoJs() {
         onClick={() => handleClick(i)}
         style={{ display: "block" }}
       >
-        {i.url}
+        {i.title}
       </div>
     ));
   });
