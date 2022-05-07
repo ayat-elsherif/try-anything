@@ -1,9 +1,11 @@
 {
   "price": 150,
-  "course_chapter": [{
+  "course_chapter": [
+    {
       "name": "Microsoft Excel - Useful Tools",
       "status": "active",
-      "classes": [{
+      "classes": [
+        {
           "title": "Inserting a Line Break with Alt + Enter",
           "type": "video/mp4",
           "icon": "fa-ok",
@@ -52,14 +54,14 @@
       ]
     },
     {
-
       "name": "Excel Formulas & What To Be Aware of",
       "status": "active",
-      "classes": [{
+      "classes": [
+        {
           "title": "How Excel Calculates - Order of Precedence",
-          "type": "video",
+          "type": "application/pdf",
           "icon": "fa-ok",
-          "url": "https://www.youtube.com/watch?v=0W6i5LYKCSI",
+          "url": "/documents/websites-History.pdf",
           "duration": "01:30",
           "status": "active",
           "is_featured": true,
@@ -80,7 +82,8 @@
     {
       "name": "Sparklines",
       "status": "active",
-      "classes": [{
+      "classes": [
+        {
           "title": "Creating A Sparkline",
           "type": "video",
           "icon": "fa-ok",
@@ -125,7 +128,8 @@
     {
       "name": "still trying",
       "status": "active",
-      "classes": [{
+      "classes": [
+        {
           "title": "Creating A Sparkline",
           "type": "video",
           "icon": "fa-ok",

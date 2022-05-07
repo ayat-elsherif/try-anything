@@ -1,14 +1,14 @@
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import "./videojs/skins/shaka/videojs.css";
 import videojs from "video.js";
 import "./videojs/components/nuevo.js";
 import "./videojs/components/thumbnails.js"; // if you need it
 import "./videojs/components/upnext.js";
-import TempData from "./TempData.json";
-export default function VideoJs() {
+
+export default function VideoJs({ handleClickOnVideo, videoPlayer }) {
   let player;
-  let allDataFromJson = [];
-  console.log(allDataFromJson, "urls");
+  // const [currentVideo, setCurrentVideo] = useState();
+  console.log(handleClickOnVideo, "handleClickOnVideo");
   useEffect(() =>
     // video properties
     {
@@ -16,6 +16,8 @@ export default function VideoJs() {
         controls: true,
         preload: "auto",
         playsinline: "true",
+        // autoplay: "muted",
+        // "controlBar.remainingTimeDisplay.displayNegative": false,
         poster: "/images/screenshot.png",
         sources: [
           {
@@ -49,7 +51,7 @@ export default function VideoJs() {
 
       // Initialize thumbnails plugin if required
 
-      player.thumbnails();
+      // player.thumbnails();
 
       player.on("nuevoReady", function () {
         var track = {
@@ -61,70 +63,15 @@ export default function VideoJs() {
 
       return () => {
         // destroy player on unmount
-        if (this.player) {
-          this.player.dispose();
+        if (player) {
+          console.log(player, "unomunt");
+          player.dispose();
         }
       };
     }, []);
-
-  const handleClick = (item) => {
-    if (player) {
-      console.log(item, "item");
-      const video_details = {
-        sources: [
-          {
-            src: item.url,
-            type: item.type,
-          },
-        ],
-        tracks: [
-          {
-            kind: "captions",
-            src: "//url-to-captions_en.vtt",
-            srlang: "en",
-            label: "English",
-            default: true,
-          },
-          {
-            kind: "captions",
-            src: "//url-to-captions_de.vtt",
-            srlang: "de",
-            label: "German",
-          },
-          {
-            kind: "captions",
-            src: "//url-to-captions_fr.vtt",
-            srlang: "fr",
-            label: "French",
-          },
-          {
-            kind: "chapters",
-            src: "/chapters/steal.vtt",
-            srclang: "en",
-            label: "Chapters",
-          },
-        ],
-        // tracks: [{ kind: "metadata", src: "//url-to-vtt-thumbs-file.vtt" }],
-        poster: item.img,
-        title: item.title,
-        infoTitle: item.title,
-        infoDescription: "Info 1 description",
-      };
-      player.changeSource(video_details);
-    }
+  const returnVideoPlayer = (player) => {
+    videoPlayer(player);
   };
-
-  allDataFromJson = TempData.course_chapter.map((item) => {
-    return item.classes.map((i, index) => (
-      <div
-        key={index}
-        onClick={() => handleClick(i)}
-        style={{ display: "block" }}
-      >
-        {i.url}
-      </div>
-    ));
-  });
   return (
     <>
       <div data-vjs-player>
@@ -133,10 +80,8 @@ export default function VideoJs() {
           className="video-js vjs-fluid"
         />
       </div>
-      {/* <button className="btn" onClick={handleClick}>
-        Change source
-      </button> */}
-      <div>{allDataFromJson}</div>
+
+      {/* <div>{allDataFromJson}</div> */}
     </>
   );
 }
